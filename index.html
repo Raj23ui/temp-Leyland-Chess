@@ -16,6 +16,8 @@
     --dark2:#1f2937;
     --light:#f8fafc;
     --gray:#64748b;
+    --success:#10b981;
+    --error:#ef4444;
 }
 
 *{
@@ -296,6 +298,36 @@ button{
     padding:14px;
     font-weight:700;
     cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+/* MESSAGE ALERT */
+
+.form-message{
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:15px;
+    text-align:center;
+    font-weight:600;
+    display:none;
+}
+
+.form-message.success{
+    background-color:#d1fae5;
+    color:#065f46;
+    border:1px solid var(--success);
+    display:block;
+}
+
+.form-message.error{
+    background-color:#fee2e2;
+    color:#991b1b;
+    border:1px solid var(--error);
+    display:block;
 }
 
 /* FOOTER */
@@ -528,13 +560,15 @@ footer{
 
             </div>
 
-            <form>
+            <form id="contact-form" method="POST" action="https://formspree.io/f/xlgkvaap">
 
-                <input type="text" placeholder="Your Name">
+                <div class="form-message" id="form-message"></div>
 
-                <input type="email" placeholder="Your Email">
+                <input type="text" name="name" placeholder="Your Name" required>
 
-                <textarea rows="5" placeholder="Message"></textarea>
+                <input type="email" name="email" placeholder="Your Email" required>
+
+                <textarea rows="5" name="message" placeholder="Message" required></textarea>
 
                 <button type="submit">
                     Send Message
@@ -553,6 +587,44 @@ footer{
         © 2026 Leyland Chess Club • All Rights Reserved
     </p>
 </footer>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const messageDiv = document.getElementById('form-message');
+    
+    // Send form data to Formspree
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Success message
+            messageDiv.textContent = '✓ Message sent successfully! Thank you for contacting us.';
+            messageDiv.className = 'form-message success';
+            form.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.className = 'form-message';
+            }, 5000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    })
+    .catch(error => {
+        // Error message
+        messageDiv.textContent = '✗ Error sending message. Please try again later.';
+        messageDiv.className = 'form-message error';
+    });
+});
+</script>
 
 </body>
 </html>
