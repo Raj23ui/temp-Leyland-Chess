@@ -204,6 +204,48 @@ section{
     border-radius:16px;
 }
 
+/* LEAGUE */
+
+.league{
+    background:#f8fafc;
+}
+
+.league-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.league-card{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.league-card:hover{
+    transform:translateY(-8px);
+}
+
+.league-card h3{
+    margin-bottom:15px;
+    color:var(--gold);
+}
+
+.league-card a{
+    display:inline-block;
+    margin-top:15px;
+    color:var(--gold);
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.league-card a:hover{
+    color:var(--dark);
+}
+
 /* TABLE */
 
 table{
@@ -414,43 +456,46 @@ footer{
 
 </section>
 
-<section id="league">
+<section class="league" id="league">
 
     <div class="container">
 
         <h2 class="section-title">League Teams</h2>
 
         <p class="section-subtitle">
-            Sample fixtures and results.
+            Competing at the highest level across multiple leagues.
         </p>
 
-        <table>
+        <div class="league-grid">
 
-            <tr>
-                <th>Date</th>
-                <th>Match</th>
-                <th>Result</th>
-            </tr>
+            <div class="league-card">
+                <h3>Central Lancashire Chess League</h3>
+                <p>
+                    Leyland competes across multiple divisions in this established regional league, 
+                    providing competitive fixtures throughout the season for players of all strengths.
+                </p>
+                <a href="https://lms.englishchess.org.uk/lms/organisation/434/tables" target="_blank">View Fixtures & Results →</a>
+            </div>
 
-            <tr>
-                <td>12 Sept</td>
-                <td>Leyland vs Preston</td>
-                <td>3½ - 2½</td>
-            </tr>
+            <div class="league-card">
+                <h3>Blackpool & Fylde League</h3>
+                <p>
+                    Our teams also compete in the Blackpool and Fylde League, showcasing Leyland's 
+                    presence across Lancashire's premier chess competitions.
+                </p>
+                <a href="https://lms.englishchess.org.uk/lms/organisation/434/tables" target="_blank">View Fixtures & Results →</a>
+            </div>
 
-            <tr>
-                <td>26 Sept</td>
-                <td>Blackpool vs Leyland</td>
-                <td>2 - 4</td>
-            </tr>
+            <div class="league-card">
+                <h3>Get Involved</h3>
+                <p>
+                    All members are encouraged to participate in league matches, regardless of playing strength. 
+                    Whether you're a seasoned competitor or developing player, there's a place for you in our teams.
+                </p>
+                <a href="#contact">Contact Us to Join →</a>
+            </div>
 
-            <tr>
-                <td>10 Oct</td>
-                <td>Leyland vs Southport</td>
-                <td>TBC</td>
-            </tr>
-
-        </table>
+        </div>
 
     </div>
 
