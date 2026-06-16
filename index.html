@@ -330,6 +330,19 @@ button:hover{
     display:block;
 }
 
+/* SECURITY WARNING */
+
+.form-warning{
+    padding:12px 15px;
+    background-color:#fef3c7;
+    border-left:4px solid #f59e0b;
+    border-radius:4px;
+    margin-bottom:15px;
+    font-size:0.9rem;
+    color:#78350f;
+    line-height:1.5;
+}
+
 /* FOOTER */
 
 footer{
@@ -569,6 +582,10 @@ footer{
                 <input type="email" name="email" placeholder="Your Email" required>
 
                 <textarea rows="5" name="message" placeholder="Message" required></textarea>
+
+                <div class="form-warning">
+                    ⚠️ Please do not share personal or sensitive information (such as passwords, financial details, or confidential data) via this form. For security purposes, use only general contact information.
+                </div>
 
                 <button type="submit">
                     Send Message
